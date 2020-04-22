@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var axios = require('axios');
+const express = require('express');
+const router = express.Router();
+const axios = require('axios');
 
 const formatOwner = (owner) => {
   const { login, avatar_url, html_url } = owner;
@@ -35,7 +35,6 @@ const formatObject = (obj) => {
   };
 };
 
-/* GET home page. */
 router.get('/', async function (req, res, next) {
   try {
     const initialResult = await axios.get('https://api.github.com/search/repositories?q=tetris');
