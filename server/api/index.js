@@ -35,9 +35,11 @@ const formatObject = (obj) => {
   };
 };
 
-router.get('/', async function (req, res, next) {
+router.get('/:searchQuery', async function (req, res, next) {
   try {
-    const initialResult = await axios.get('https://api.github.com/search/repositories?q=tetris');
+    const initialResult = await axios.get(
+      `https://api.github.com/search/repositories?q=${req.params.searchQuery}`
+    );
     const result = initialResult.data.items.map((repo) => formatObject(repo));
     res.json(result);
   } catch (error) {
