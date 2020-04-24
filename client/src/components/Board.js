@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
-import Card from './Card';
+import React from 'react';
+import RepoCard from './RepoCard';
+import UserCard from './UserCard';
 import '../css/board.css';
 
-export default function Board(props) {
-  const [repos, setRepos] = useState(props.repos);
-
-  return (
-    <div className="repo-board">
-      {repos ? repos.map((repo) => <Card repo={repo} key={repo.id} />) : ''}
-    </div>
+export default function Board({ repos, user }) {
+  const display = repos ? (
+    repos.map((repo) => <RepoCard repo={repo} key={repo.id} />)
+  ) : user ? (
+    <UserCard user={user} />
+  ) : (
+    ''
   );
+
+  return <div className="repo-board">{display}</div>;
 }

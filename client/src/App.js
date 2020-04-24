@@ -5,20 +5,26 @@ import Board from './components/Board';
 import './App.css';
 
 function App() {
-  const [searchResults, setSearchResults] = useState(null);
+  const [repositories, setRepositories] = useState(null);
+  const [user, setUser] = useState(null);
 
-  const searchRepos = async (searchTerm) => {
-    const data = await axios.get(`/api/${searchTerm}`);
-    setSearchResults(data.data);
-    console.log(searchResults);
+  const search = async (queryTerm, queryType) => {
+    if (queryType === 'Repository') {
+      const data = await axios.get(`/api/repos/${queryTerm}`);
+      setUser(false);
+      setRepositories(data.data);
+    }
+    if (queryType === 'User') {
+      const data = await axios.get(`/api/users/${queryTerm}`);
+      setRepositories(false);
+      setUser(data.data);
+    }
   };
-
-  const display = searchResults ? <Board repos={searchResults} /> : '';
 
   return (
     <div>
-      <Header search={searchRepos} />
-      {display}
+      <Header search={search} />
+      {repositories ? <Board repos={repositories} /> : user ? <Board user={user} /> : ''}
     </div>
   );
 }
