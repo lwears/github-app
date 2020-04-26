@@ -1,7 +1,8 @@
 import React from 'react';
-import '../css/search.css';
+import PropTypes from 'prop-types';
+import '../css/SearchBar.css';
 
-export default function Search(props) {
+export default function SearchBar(props) {
   const query = React.createRef();
   const queryType = React.createRef();
   const { search } = props;
@@ -13,13 +14,17 @@ export default function Search(props) {
   };
 
   return (
-    <form className="search" onSubmit={handleSubmit}>
-      <select name="query-type" id="query-type" ref={queryType}>
-        <option value="Repository">Repository</option>
-        <option value="User">User</option>
+    <form className='search' onSubmit={handleSubmit}>
+      <select name='query-type' id='query-type' ref={queryType}>
+        <option value='Repository'>Repository</option>
+        <option value='User'>User</option>
       </select>
-      <input type="text" id="search" ref={query} />
-      <input type="submit" value="Search" />
+      <input type='text' id='search' ref={query} />
+      <input type='submit' value='Search' />
     </form>
   );
 }
+
+SearchBar.propTypes = {
+  search: PropTypes.func.isRequired,
+};

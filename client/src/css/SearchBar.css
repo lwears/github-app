@@ -21,7 +21,6 @@ input[type='submit'] {
   border-radius: 0px 2px 2px 0px;
   background-color: #5da2d5;
   font-weight: 300;
-  text-transform: uppercase;
   color: white;
   padding: 0.45em 0.85em;
   border: none;
@@ -40,6 +39,11 @@ select {
   padding: 0.45em 0.85em;
   border: none;
   font-size: 1.1em;
+}
+
+select:hover {
+  background-color: #8bc1eb;
+  cursor: pointer;
 }
 
 input[type='submit']:hover {

@@ -1,18 +1,24 @@
 * {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-.repo-board {
+.board {
   display: -ms-flexbox;
+  display: -webkit-box;
   display: flex;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
   flex-direction: row;
   -ms-flex-pack: distribute;
   max-width: 1400px;
   margin: 0 auto;
-  justify-content: center;
-  justify-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: space-evenly;
 }

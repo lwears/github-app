@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import '../css/UserCard.css';
 
-export default function UserCard(props) {
+export default function UserCard({ user }) {
   const {
     login,
     html_url,
@@ -12,34 +13,56 @@ export default function UserCard(props) {
     bio,
     created_at,
     name,
-  } = props.user;
+  } = user;
 
   return (
-    <div className="user-card">
-      <div className="left-container border-right">
-        <div className="center">
-          <h4>Followers:</h4>
-          <p>{followers}</p>
-        </div>
-        <div className="center">
-          <h4>Following:</h4>
-          <p>{following}</p>
-        </div>
-        <div className="center">
-          <h4>Repositories:</h4>
-          <p>{public_repos}</p>
-        </div>
-        <a href={html_url}>GitHub Link</a>
+    <div className='user-card'>
+      <div className='container left border-right'>
+        <p>
+          <strong>Joined: </strong>
+          {created_at}
+        </p>
+        <img className='user-image' src={avatar_url} alt='Repository owner Avatar' />
+        <a href={html_url}>
+          <button type='button' className='user-link'>
+            GitHub Link
+          </button>
+        </a>
       </div>
-      <div className="middle-container border-right">
-        <h2>{name}</h2>
-        <h2>{login}</h2>
+      <div className='container right'>
+        <div>
+          <h1>{name}</h1>
+          <h4>{login}</h4>
+        </div>
         {bio ? <p>{bio}</p> : ''}
-        <p>Joined on: {created_at}</p>
-      </div>
-      <div className="right-container">
-        <img src={avatar_url} alt="Repository owner Avatar" />
+        <div className='stats'>
+          <div className='stat'>
+            <h4>Followers:</h4>
+            <p>{followers}</p>
+          </div>
+          <div className='stat'>
+            <h4>Following:</h4>
+            <p>{following}</p>
+          </div>
+          <div className='stat'>
+            <h4>Repositories:</h4>
+            <p>{public_repos}</p>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
+
+UserCard.propTypes = {
+  user: PropTypes.shape({
+    owner: PropTypes.string,
+    name: PropTypes.string,
+    description: PropTypes.string,
+    language: PropTypes.string,
+    created_at: PropTypes.string,
+    updated_at: PropTypes.string,
+    html_url: PropTypes.string,
+    homepage: PropTypes.string,
+  }).isRequired,
+};

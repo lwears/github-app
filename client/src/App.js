@@ -1,8 +1,8 @@
+/* eslint-disable react/jsx-filename-extension */
 import React, { useState } from 'react';
 import axios from 'axios';
 import Header from './components/Header';
 import Board from './components/Board';
-import './App.css';
 
 function App() {
   const [repositories, setRepositories] = useState(null);
