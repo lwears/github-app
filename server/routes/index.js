@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path');
 
 /* GET React Frontend. */
-router.get('/', function (req, res, next) {
+router.get('/', function (req, res) {
   res.sendFile(path.resolve('../') + '/client/build/index.html');
 });
 
