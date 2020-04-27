@@ -23,3 +23,8 @@ Express
 ### Linting
 
 Airbnb & prettier
+
+### Testing
+
+Jest
+Supertest
