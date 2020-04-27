@@ -56,13 +56,15 @@ export default function UserCard({ user }) {
 
 UserCard.propTypes = {
   user: PropTypes.shape({
-    owner: PropTypes.string,
+    login: PropTypes.string,
     name: PropTypes.string,
-    description: PropTypes.string,
-    language: PropTypes.string,
-    created_at: PropTypes.string,
-    updated_at: PropTypes.string,
+    id: PropTypes.number,
+    avatar_url: PropTypes.string,
     html_url: PropTypes.string,
-    homepage: PropTypes.string,
+    public_repos: PropTypes.number,
+    followers: PropTypes.number,
+    following: PropTypes.number,
+    bio: PropTypes.string,
+    created_at: PropTypes.string,
   }).isRequired,
 };

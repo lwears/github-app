@@ -7,9 +7,9 @@ import '../css/Board.css';
 export default function Board({ repos, user }) {
   let display;
 
-  if (repos) {
+  if (repos.length !== 0) {
     display = repos.map((repo) => <RepoCard repo={repo} key={repo.id} />);
-  } else if (user) {
+  } else if (user.login) {
     display = <UserCard user={user} />;
   } else {
     display = '';
@@ -17,6 +17,11 @@ export default function Board({ repos, user }) {
 
   return <div className='board'>{display}</div>;
 }
+
+Board.defaultProps = {
+  repos: [],
+  user: {},
+};
 
 Board.propTypes = {
   repos: PropTypes.arrayOf(
@@ -27,7 +32,7 @@ Board.propTypes = {
       homepage: PropTypes.string,
       url: PropTypes.string,
       description: PropTypes.string,
-      private: PropTypes.string,
+      publicRepo: PropTypes.bool,
       updated_at: PropTypes.string,
       created_at: PropTypes.string,
       language: PropTypes.string,
@@ -37,17 +42,17 @@ Board.propTypes = {
         html_url: PropTypes.string,
       }),
     })
-  ).isRequired,
+  ),
   user: PropTypes.shape({
     login: PropTypes.string,
     id: PropTypes.number,
     avatar_url: PropTypes.string,
     html_url: PropTypes.string,
-    public_repos: PropTypes.string,
-    followers: PropTypes.string,
-    following: PropTypes.string,
+    public_repos: PropTypes.number,
+    followers: PropTypes.number,
+    following: PropTypes.number,
     created_at: PropTypes.string,
     bio: PropTypes.string,
     name: PropTypes.string,
-  }).isRequired,
+  }),
 };

@@ -71,8 +71,8 @@ router.get('/repos/:searchQuery', async function (req, res) {
     const result = initialResult.data.items.map((repo) => formatRepo(repo));
     res.json(result);
   } catch (error) {
-    res.sendStatus(404);
-    res.json({ message: error.message });
+    res.status(404);
+    res.json({ message: 'No Repos Found' });
   }
 });
 
@@ -82,8 +82,8 @@ router.get('/users/:searchQuery', async function (req, res) {
     const result = formatUser(initialResult.data);
     res.json(result);
   } catch (error) {
-    res.sendStatus(404);
-    res.json({ message: error.message });
+    res.status(404);
+    res.json({ message: 'No User Found!' });
   }
 });
 
