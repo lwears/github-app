@@ -9,7 +9,8 @@
   "devDependencies": {},
   "scripts": {
     "install": "cd server && npm install",
-    "start": "cd server && npm start"
+    "start": "node server/bin/www",
+    "open": "cd server && npm start"
   },
   "repository": {
     "type": "git",
