@@ -63,7 +63,7 @@ const formatUser = ({
 
 // API Routes
 
-router.get('/repos/:searchQuery', async function (req, res) {
+router.get('/repos/:searchQuery', async (req, res) => {
   try {
     const initialResult = await axios.get(
       `https://api.github.com/search/repositories?q=${req.params.searchQuery}`
@@ -76,7 +76,7 @@ router.get('/repos/:searchQuery', async function (req, res) {
   }
 });
 
-router.get('/users/:searchQuery', async function (req, res) {
+router.get('/users/:searchQuery', async (req, res) => {
   try {
     const initialResult = await axios.get(`https://api.github.com/users/${req.params.searchQuery}`);
     const result = formatUser(initialResult.data);
