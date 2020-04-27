@@ -1,4 +1,5 @@
 const express = require('express');
+
 const router = express.Router();
 const axios = require('axios');
 
@@ -15,7 +16,7 @@ const formatRepo = ({
   full_name,
   homepage,
   url,
-  private,
+  private: publicRepo,
   updated_at,
   created_at,
   language,
@@ -29,7 +30,7 @@ const formatRepo = ({
   homepage,
   url,
   description,
-  publicRepo: !private,
+  publicRepo: !publicRepo,
   updated_at: updated_at.split('T')[0],
   created_at: created_at.split('T')[0],
   language,
@@ -68,11 +69,12 @@ router.get('/repos/:searchQuery', async (req, res) => {
     const initialResult = await axios.get(
       `https://api.github.com/search/repositories?q=${req.params.searchQuery}`
     );
+    if (initialResult.data.items.length === 0) throw Error;
     const result = initialResult.data.items.map((repo) => formatRepo(repo));
     res.json(result);
   } catch (error) {
     res.status(404);
-    res.json({ message: 'No Repos Found' });
+    res.json({ message: 'No Repos Found!' });
   }
 });
 
@@ -87,4 +89,9 @@ router.get('/users/:searchQuery', async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = {
+  router,
+  formatOwner,
+  formatRepo,
+  formatUser,
+};
