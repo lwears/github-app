@@ -9,7 +9,10 @@
   "devDependencies": {},
   "scripts": {
     "install": "cd server && npm install",
-    "start": "cd server && npm start"
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "start-client": "cd client && npm start",
+    "start": "node ./server/bin/www"
   },
   "repository": {
     "type": "git",
