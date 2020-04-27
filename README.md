@@ -18,5 +18,8 @@ React
 
 ## Backend
 
-Generated with Express-Generator
 Express
+
+### Linting
+
+Airbnb & prettier
