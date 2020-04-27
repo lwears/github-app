@@ -2,9 +2,11 @@
 
 Github Repo Search App
 
-## Get Started
+Deployed via Heroku: https://obscure-headland-66367.herokuapp.com/
 
-- Clone Repo
+## Get Started Locally
+
+- Clone repo
 - npm install
 - npm start
 
@@ -16,4 +18,5 @@ React
 
 ## Backend
 
+Generated with Express-Generator
 Express
