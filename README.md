@@ -26,5 +26,5 @@ Airbnb & prettier
 
 ### Testing
 
-Jest
-Supertest
+- Jest
+- Supertest
