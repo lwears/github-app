@@ -14,15 +14,15 @@ If the web browser doesnt open automatically browse to https://localhost:3000
 
 ## Frontend
 
-React
+- React
 
 ## Backend
 
-Express
+- NodeJS & Express
 
 ### Linting
 
-Airbnb & prettier
+- Airbnb & prettier
 
 ### Testing
 
